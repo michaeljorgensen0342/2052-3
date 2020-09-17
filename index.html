@@ -26,8 +26,10 @@
     left:45%
 }
 body{
-  background-image:no-repeat;
-    url("https://images.gog-statics.com/c87092fa00803c834e7a8adee277f639fd9fdcf03bc59203d384f58ccddc6cd1_product_card_v2_mobile_slider_639.jpg")
+  background-image:
+    url("https://images.gog-statics.com/c87092fa00803c834e7a8adee277f639fd9fdcf03bc59203d384f58ccddc6cd1_product_card_v2_mobile_slider_639.jpg");
+    background-repeat: no-repeat;
+  background-size: 100%
 }
 </style>
 
@@ -42,10 +44,9 @@ body{
   <audio id="goodjob" controls>
   <source src="https://seattleacademy.github.io/2052-3/goodjob.m4a" type="audio/ogg"
 type="audio/mpeg">
-  Your browser does not support the audio tag.
 </audio>
 <button id="pressme">press me</button>
-<input id="q1" data-correct="42 />"
+<input id="q1" data-correct="42/>"
   
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   
@@ -55,7 +56,6 @@ let goodjob = document.getElementById("goodjob")
 function playGoodJob(evt){
   goodjob.play();
 }
-
 $("#pressme").click(playGoodJob);
     </script>
 
