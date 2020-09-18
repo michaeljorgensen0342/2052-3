@@ -23,13 +23,68 @@
 <style>
 #q1{
   position:absolute;
-    left:45%
+    left:70%;
+  top:20%
+}
+#q2{
+  position:absolute;
+  left:58%;
+  top:40%
+}
+#q3{
+  position:absolute;
+  left:10%;
+  top:58%
+}
+#q4{
+  position:absolute;
+  left:58%;
+  top:75%
+}
+#q5{
+  position:absolute;
+  left:26%;
+  top:5%
+}
+#q6{
+  position:absolute;
+    left:87%;
+  top:80%
+}
+#q7{
+  position:absolute;
+  left:52%;
+  top:12%
+}
+#q8{
+  position:absolute;
+  left:25%;
+  top:20%
+}
+#q9{
+  position:absolute;
+  left:30%;
+  top:42%
+}
+#q10{
+  position:absolute;
+  left:77%;
+  top:70%
 }
 body{
   background-image:
     url("https://images.gog-statics.com/c87092fa00803c834e7a8adee277f639fd9fdcf03bc59203d384f58ccddc6cd1_product_card_v2_mobile_slider_639.jpg");
     background-repeat: no-repeat;
   background-size: 100%
+}
+#timerdiv{
+  color:white;
+}
+input{background-color: white}
+.correct{background: green;
+}
+
+.incorrect{background: red;
 }
 </style>
 
@@ -41,22 +96,54 @@ body{
 </head>
 
 <body translate="no" >
-  <audio id="goodjob" controls>
-  <source src="https://seattleacademy.github.io/2052-3/goodjob.m4a" type="audio/ogg"
+  <div id="timerdiv">
+  Timer: <span id="timer">0</span>
+  </div>
+<audio id="goodjob">
+  <source src="https://seattleacademy.github.io/2052-3/goodjob.m4a" type="audio/mpeg"
 type="audio/mpeg">
 </audio>
 <button id="pressme">press me</button>
-<input id="q1" data-correct="42/>"
+
+<input id="q1" data-correct="blue" class="correct">
+<input id="q2" data-correct="yellow" class="correct">
+<input id="q3" data-correct="green" class="correct">
+<input id="q4" data-correct="purple" class="correct">
+<input id="q5" data-correct="orange" class="correct">
+<input id="q6" data-correct="red" class="correct">
+<input id="q7" data-correct="water" class="correct">
+<input id="q8" data-correct="Sam" class="correct">
+<input id="q9" data-correct="Otto" class="correct">
+<input id="q10" data-correct="brush" class="correct">
   
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   
       <script id="rendered-js" >
+let timer = 0;
+function addSecond(){
+  timer = timer + 1;
+  $("#timer").text(timer);
+}
+
+setInterval(addSecond, 1000)
+
 let goodjob = document.getElementById("goodjob")
 
 function playGoodJob(evt){
   goodjob.play();
 }
 $("#pressme").click(playGoodJob);
+
+$("input").change(onChange);
+
+function onChange(evt) {
+  let correct = $(this).data("correct");
+  let response = $(this).val();
+  if (correct == response) {    $(this).removeClass("incorrect").addClass("correct");goodjob.play();
+  } else {
+    $(this).removeClass("correct").addClass("incorrect");
+  }
+}
     </script>
 
   
